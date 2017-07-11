@@ -1,6 +1,6 @@
-/*---------------------*/
+
 /* Body and background */
-/*---------------------*/
+
 body {
   background-color: black;
   font-family: 'Cormorant Unicase', serif;
@@ -11,6 +11,19 @@ header {
   text-align: center;
   padding: 20px;
 }
+
+p {
+  text-align: center;
+}
+
+.rules { 
+    display: none;
+}
+
+p:hover .rules {
+    display: inline-block;
+}
+
 .characterWrapper {
   width: 75%;
   margin-right: auto;
@@ -30,11 +43,11 @@ header {
   font-size: 150%;
 }
 
-/*---------------------*/
+
 /* Character rendering */
-/*---------------------*/
+
 .character {
-  width: 153px;
+  width: 200px;
   margin: 0px 40px 0px 40px;
   cursor: pointer;
   display: inline-block;
@@ -57,21 +70,20 @@ header {
   text-align: center;
 }
 
-/*---------------------*/
-/*      Fighting       */
-/*---------------------*/
+
+/* Fighting */
+
 .attack {
   text-align: center;
 }
 .action {
   margin: 15px 0px;
 }
-/*#attack-button{
-  visibility: hidden;
-}*/
+
 .btn {
-  background: #000;
-  color: #DBD2C6; 
+  background: #ffffff;
+  color: #000;
+  margin-bottom: 10px; 
 }
 .enemy {
   width: 153px;
@@ -81,7 +93,7 @@ header {
   border-width: 1px;
   cursor: pointer;
   display: inline-block;
-  background-color: red;
+  background-color: grey;
   float: left;
 }
 #attacker {
@@ -92,9 +104,9 @@ header {
   color: white;
 }
 
-/*---------------------*/
-/* Available Oponents  */
-/*---------------------*/
+
+/* Available Oponents */
+
 #available-to-attack-section {
   float: right;
 }
@@ -102,28 +114,24 @@ header {
   height: 100px;
 }
 
-/*---------------------*/
-/*      Defender       */
-/*---------------------*/
 
-/*#defender {
-  width: 190px;
-  height: 160px;
-}*/
+/* Defender */
+
 #defender-name {
   text-align: center;
 }
 #defender-image {
   padding: 0px 16px;
   margin: 3px 0px;
+
 }
 #defender-health {
   text-align: center;
 }
 
-/*---------------------*/
-/*   Media Queries     */
-/*---------------------*/
+
+/* Media Queries */
+
 @media only screen and (max-device-width: 768px) {
   .character {
     display: block;

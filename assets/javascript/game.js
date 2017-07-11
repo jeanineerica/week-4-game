@@ -10,6 +10,7 @@ $(document).ready(function() {
 //on start audio
 audio.play();
 
+
 //Array of Playable Characters
 var characters = {
     'beetlejuice': {
