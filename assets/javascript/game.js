@@ -2,12 +2,13 @@
 $(document).ready(function() {
 
 //audio clips
-// let audio = new Audio('assets/audio/imperial_march.mp3');
-// let force = new Audio('assets/audio/force.mp3');
-// let blaster = new Audio('assets/audio/blaster-firing.mp3');
-// let jediKnow = new Audio('assets/audio/jedi-know.mp3');
-// let lightsaber = new Audio('assets/audio/light-saber-on.mp3');
-// let rtwoo = new Audio('assets/audio/R2D2.mp3');
+ var audio = new Audio('assets/audio/bej-action.wav');
+ var trust = new Audio('assets/audio/bej-trust.wav');
+ var harry = new Audio('assets/audio/harry.ogg');
+ var thro = new Audio('assets/audio/throw.wav');
+
+//on start audio
+audio.play();
 
 //Array of Playable Characters
 var characters = {
@@ -60,7 +61,6 @@ var renderOne = function(character, renderArea, makeChar) {
     $(renderArea).append(charDiv);
     //Capitalizes the first letter in characters name
     // $('.character').css('textTransform', 'capitalize');
-    // conditional render
     if (makeChar == 'enemy') {
       $(charDiv).addClass('enemy');
     } else if (makeChar == 'defender') {
@@ -69,7 +69,7 @@ var renderOne = function(character, renderArea, makeChar) {
     }
   };
 
-  // Create function to render game message to DOM
+  // send game message to DOM
   var renderMessage = function(message) {
     var gameMesageSet = $("#gameMessage");
     var newMessage = $("<div>").text(message);
@@ -131,7 +131,7 @@ var renderOne = function(character, renderArea, makeChar) {
       $('#defender').empty();
       $('#defender').append("Your selected opponent")
       renderOne(charObj, '#defender', 'defender');
-      //lightsaber.play();
+      thro.play();
     }
     //re-render player character when attacked
     if (areaRender == 'enemyDamage') {
@@ -143,7 +143,7 @@ var renderOne = function(character, renderArea, makeChar) {
       $('#defender').empty();
       var gameStateMessage = "You have defated " + charObj.name + ", you can choose to fight another enemy.";
       renderMessage(gameStateMessage);
-      blaster.play();
+      
     }
   };
   //this is to render all characters for user to choose their computer
@@ -165,8 +165,7 @@ var renderOne = function(character, renderArea, makeChar) {
     }
   });
 
-  // ----------------------------------------------------------------
-  // Create functions to enable actions between objects.
+  // Functions for actions between objects.
   $("#attack-button").on("click", function() {
     //if defernder area has enemy
     if ($('#defender').children().length !== 0) {
@@ -189,8 +188,8 @@ var renderOne = function(character, renderArea, makeChar) {
         renderCharacters(currSelectedCharacter, 'enemyDamage');
         if (currSelectedCharacter.hp <= 0) {
           renderMessage("clearMessage");
-          restartGame("You have been defeated...GAME OVER!!!");
-          //force.play();
+          restartGame("Game over!! Try Again!");
+          trust.play();
           $("#attack-button").unbind("click");
         }
       } else {
@@ -198,12 +197,10 @@ var renderOne = function(character, renderArea, makeChar) {
         killCount++;
         if (killCount >= 3) {
           renderMessage("clearMessage");
-          restartGame("You Won!!!! GAME OVER!!!");
-          //jediKnow.play();
-          // The following line will play the imperial march:
+          restartGame("You Won!!!! Play Again!");
           setTimeout(function() {
-          //audio.play();
-          }, 2000);
+          harry.play();
+          }, 1000);
 
         }
       }
@@ -211,7 +208,6 @@ var renderOne = function(character, renderArea, makeChar) {
     } else {
       renderMessage("clearMessage");
       renderMessage("No enemy here.");
-      //rtwoo.play();
     }
   });
 
